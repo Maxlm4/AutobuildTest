@@ -1,4 +1,4 @@
-- uses: game-ci/unity-builder@v2
+uses: game-ci/unity-builder@v2
   env:
     UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
     UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
@@ -7,11 +7,11 @@
     targetPlatform:
       - StandaloneWindows64 # Build a Windows 64-bit standalone.
       - Android # Build an Android .apk standalone app.
-- uses: actions/upload-artifact@v2
+uses: actions/upload-artifact@v2
   with:
     name: Build
     path: build
-- uses: actions/cache@v2
+uses: actions/cache@v2
   with:
     path: path/to/your/project/Library
     key: Library-MyProjectName-TargetPlatform
