@@ -232,8 +232,8 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-        targetPlatform:
-          - StandaloneWindows64 # Build a Windows 64-bit standalone.
+      targetPlatform:
+        - StandaloneWindows64 # Build a Windows 64-bit standalone.
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
