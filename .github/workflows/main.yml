@@ -1,35 +1,55 @@
-name: Build project
+name: Build
 
-on: [push]
+on: 
+  push: { branches: [master] }
+
+env:
+  UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
 
 jobs:
-  buildForAllSupportedPlatforms:
-    name: Build for ${{ matrix.targetPlatform }}
+  buildAndTestForSomePlatforms:
+    name: Build for ${{ matrix.targetPlatform }} on version ${{ matrix.unityVersion }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
+        projectPath:
+          - ./
+        unityVersion:
+          - 2020.3.30f1
         targetPlatform:
-          - StandaloneWindows64 # Build a Windows 64-bit standalone.
+          - StandaloneWindows64
     steps:
+      - name: Create artifact dir
+        run: |
+          mkdir -p artifacts
       - uses: actions/checkout@v2
         with:
-          fetch-depth: 0
           lfs: true
-      - uses: actions/cache@v2
+      - uses: actions/cache@v1.1.0
         with:
-          path: Library
-          key: Library-${{ matrix.targetPlatform }}
-          restore-keys: Library-
-      - uses: game-ci/unity-builder@v2
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+          path: ${{ matrix.projectPath }}/Library
+          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
+          restore-keys: |
+            Library-${{ matrix.projectPath }}-
+            Library-
+      - uses: webbertakken/unity-test-runner@v1.6
+        id: testRunner
         with:
-          targetPlatform: StandaloneWindows64
-          allowDirtyBuild: true
-      - uses: actions/upload-artifact@v2
+          projectPath: ${{ matrix.projectPath }}
+          unityVersion: ${{ matrix.unityVersion }}
+      - uses: actions/upload-artifact@v1
         with:
-          name: Build-${{ matrix.targetPlatform }}
-          path: build/${{ matrix.targetPlatform }}
+          name: Test results (all modes)
+          path: ${{ steps.testRunner.outputs.artifactsPath }}
+      - uses: webbertakken/unity-builder@v0.12
+        with:
+          projectPath: ${{ matrix.projectPath }}
+          unityVersion: ${{ matrix.unityVersion }}
+          targetPlatform: ${{ matrix.targetPlatform }}
+          AllowDirtyBuild: true
+          # customParameters: "-myParameter myValue -myBoolean -ThirdParameter andItsValue"
+      - uses: actions/upload-artifact@v1
+        with:
+          name: Build
+          path: build
