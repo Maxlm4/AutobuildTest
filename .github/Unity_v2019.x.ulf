@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><root>
+    <License id="Terms">
+        <MachineBindings>
+            <Binding Key="1" Value="576562626572264761624c65526f7578"/>
+            <Binding Key="2" Value="576562626572264761624c65526f7578"/>
+        </MachineBindings>
+        <MachineID Value="D7nTUnjNAmtsUMcnoyrqkgIbYdM="/>
+        <SerialHash Value="df0799d87f0b60e17423efc5783f947968ade0d1"/>
+        <Features>
+            <Feature Value="33"/>
+            <Feature Value="1"/>
+            <Feature Value="12"/>
+            <Feature Value="2"/>
+            <Feature Value="24"/>
+            <Feature Value="3"/>
+            <Feature Value="36"/>
+            <Feature Value="17"/>
+            <Feature Value="19"/>
+            <Feature Value="62"/>
+        </Features>
+        <DeveloperData Value="AQAAAEY0LUFGUUEtWUoyWi1WVU5GLU4zUkUtSEVLUw=="/>
+        <SerialMasked Value="F4-AFQA-YJ2Z-VUNF-N3RE-XXXX"/>
+        <StartDate Value="2018-03-27T00:00:00"/>
+        <UpdateDate Value="2022-03-11T15:36:18"/>
+        <InitialActivationDate Value="2018-03-27T15:29:16"/>
+        <LicenseVersion Value="6.x"/>
+        <ClientProvidedVersion Value="2019.2.11f1"/>
+        <AlwaysOnline Value="false"/>
+        <Entitlements>
+            <Entitlement Ns="unity_editor" Tag="UnityPro" Type="EDITOR" ValidTo="2022-11-12T13:13:15"/>
+            <Entitlement Ns="unity_editor" Tag="UnityPersonal" Type="EDITOR" ValidTo="9999-12-31T00:00:00"/>
+            <Entitlement Ns="unity_editor" Tag="DarkSkin" Type="EDITOR_FEATURE" ValidTo="9999-12-31T00:00:00"/>
+            <Entitlement Ns="unity_editor" Tag="UnityProStudent" Type="EDITOR_FEATURE" ValidTo="2022-11-12T13:13:15"/>
+        </Entitlements>
+    </License>
+<Signature xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/TR/2001/REC-xml-c14n-20010315#WithComments"/><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/><Reference URI="#Terms"><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/><DigestValue>hLuK/SiZwgmpI4KYZ6ahe7A9g3Y=</DigestValue></Reference></SignedInfo><SignatureValue>lLobkj7ocx62mphsCQb5gqIVOhUmIWtnc6tTin08mJ1CNooJ+j/llasulNqvmOq4f4N4Jeo9HODA&#13;
+LM2RoMaMl16JddIwUj36MkQgQ+6nAwIRp22Wjcq/iNo4GGyu0vVVh5fyT2w6BD5lGXsvcpiMClb2&#13;
+IcPiAvH0IHec4k8fR+PARIfvnOHe69A8Ea2hKMZULv8ln6ZR+qifwF5zV+YG+Ax2J0yA5ddPo9Io&#13;
+8DY/jV8hc0U8LhPN2m5FpJeBYK8jjLuf3KcK4hFAuFEvXPflXiiiRw55+vKbbKNrWHHZOK5533M+&#13;
+daLKje3kbe1MCumnPm14R59rOEOa3876uQJB0g==</SignatureValue></Signature></root>
