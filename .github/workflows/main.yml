@@ -6,7 +6,7 @@ jobs:
     container: gableroux/unity3d:2018.2.21f1
     steps:
         - name: Checkout Project
-          uses: actions/checkout@v1
+          uses: actions/checkout@v2
 
         - name: Decrypt the license file
           run: openssl aes-256-cbc -d -in .github/Unity_v2018.x.ulf.enc -k ${{ secrets.UNITY_LICENSE }} >> .github/Unity_v2018.x.ulf
@@ -22,13 +22,13 @@ jobs:
           run: /opt/Unity/Editor/Unity -quit -batchmode -nographics -silent-crashes -noUpm -logFile -projectPath . -buildOSXUniversalPlayer ./bin-osx/CISample.app      
         
         - name: Archive Windows Build
-          uses: actions/upload-artifact@v1
+          uses: actions/upload-artifact@v2
           with:
             name: CISampleWin64Binary
             path: ./bin-win64
 
         - name: Archive Mac Build
-          uses: actions/upload-artifact@v1
+          uses: actions/upload-artifact@v2
           with:
             name: CISampleOSXBinary
             path: ./bin-osx
