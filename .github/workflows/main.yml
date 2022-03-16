@@ -41,12 +41,11 @@ jobs:
       ###########################
       #          Build          #
       ###########################
-      - uses: ./
+      - uses: game-ci/unity-builder@v2
         with:
           projectPath: ${{ matrix.projectPath }}
           unityVersion: ${{ matrix.unityVersion }}
           targetPlatform: ${{ matrix.targetPlatform }}
-          customParameters: -profile SomeProfile -someBoolean -someValue exampleValue
           AllowDirtyBuild: true
 
       ###########################
