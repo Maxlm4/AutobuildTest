@@ -13,7 +13,7 @@ public class Rotate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0,0,10*Time.deltaTime);
+        transform.Rotate(0,10*Time.deltaTime,10*Time.deltaTime);
         if(Input.GetKeyDown("escape")){
             Application.Quit();
         }
