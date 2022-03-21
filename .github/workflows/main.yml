@@ -36,9 +36,9 @@ jobs:
           name: Build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
 
-  deployPages:
+  deployAndroid:
     needs: buildForIOSAndAndroid
-    name: Deploy to Github Pages
+    name: Deploy Android to Github Pages
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -46,11 +46,29 @@ jobs:
 
       - uses: actions/download-artifact@v2
         with:
-          name: build-${{ matrix.targetPlatform }}
+          name: build-Android
           path: build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-builds
-          folder: build/${{ matrix.targetPlatform }}
+          folder: build/Android
+  deployIOS:
+    needs: buildForIOSAndAndroid
+    name: Deploy IOS to Github Pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: build-StandlaoneWindows64
+          path: build
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-builds
+          folder: build/StandlaoneWindows64
