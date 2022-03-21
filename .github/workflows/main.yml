@@ -53,7 +53,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-builds
-          folder: build
+          folder: build/windows64
   deployIOS:
     needs: buildForIOSAndAndroid
     name: Deploy IOS to Github Pages
@@ -71,4 +71,4 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-builds
-          folder: build
+          folder: build/android
