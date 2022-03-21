@@ -1,7 +1,9 @@
 name: Build project
 
 on:
-  [push]
+  push:
+    branches:
+      - develop
 
 jobs:
   buildForIOSAndAndroid:
