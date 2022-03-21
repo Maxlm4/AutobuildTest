@@ -1,9 +1,12 @@
 name: Build project
 
-on: [push]
+on:
+  push:
+    branches:
+      -develop
 
 jobs:
-  buildForAllSupportedPlatforms:
+  buildForIOSAndAndroid:
     name: Build for ${{ matrix.targetPlatform }}
     runs-on: ubuntu-latest
     strategy:
@@ -11,6 +14,7 @@ jobs:
       matrix:
         targetPlatform:
           - StandaloneWindows64 # Build a Windows 64-bit standalone.
+          - Android
     steps:
       - uses: actions/checkout@v2
         with:
@@ -33,3 +37,22 @@ jobs:
         with:
           name: Build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
+
+  deployPages:
+    needs: buildForIOSAndAndroid
+    name: Deploy to Github Pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: build-${{ matrix.targetPlatform }}
+          path: build
+
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-builds
+          folder: build/${{ matrix.targetPlatform }}
