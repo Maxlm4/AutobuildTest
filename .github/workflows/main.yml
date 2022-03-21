@@ -49,13 +49,13 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: Build-Android
-          path: build
+          path: build/Android
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-builds
-          folder: build/windows64
+          folder: build/Android
   deployIOS:
     needs: buildForIOSAndAndroid
     name: Deploy IOS to Github Pages
@@ -67,10 +67,10 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: Build-StandaloneWindows64
-          path: build
+          path: build/StandaloneWindows64
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-builds
-          folder: build/android
+          folder: build/StandaloneWindows64
