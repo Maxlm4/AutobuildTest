@@ -14,7 +14,6 @@ jobs:
       matrix:
         targetPlatform:
           - StandaloneWindows64 # Build a Windows 64-bit standalone.
-          - Android
     steps:
       - uses: actions/checkout@v2
         with:
@@ -35,27 +34,27 @@ jobs:
           AllowDirtyBuild: true
       - uses: actions/upload-artifact@v2
         with:
-          name: Build-${{ matrix.targetPlatform }}
+          name: build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
 
-  deployAndroid:
-    needs: buildForIOSAndAndroid
-    name: Deploy Android to Github Pages
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+  # deployAndroid:
+  #   needs: buildForIOSAndAndroid
+  #   name: Deploy Android to Github Pages
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v2
 
-      - uses: actions/download-artifact@v2
-        with:
-          name: Build-Android
-          path: build/Android
+  #     - uses: actions/download-artifact@v2
+  #       with:
+  #         name: Build-Android
+  #         path: build/Android
 
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.4
-        with:
-          branch: gh-builds
-          folder: build/Android
+  #     - name: Deploy
+  #       uses: JamesIves/github-pages-deploy-action@4.1.4
+  #       with:
+  #         branch: gh-builds
+  #         folder: build/Android
   deployIOS:
     needs: buildForIOSAndAndroid
     name: Deploy IOS to Github Pages
@@ -66,7 +65,7 @@ jobs:
 
       - uses: actions/download-artifact@v2
         with:
-          name: Build-StandaloneWindows64
+          name: build-StandaloneWindows64
           path: build/StandaloneWindows64
 
       - name: Deploy
