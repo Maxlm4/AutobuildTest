@@ -37,7 +37,7 @@ jobs:
         with:
           name: build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
-          
+
   deployAndroid:
     needs: buildForIOSAndAndroid
     name: Deploy Android to Github Pages
@@ -52,7 +52,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: develop
-          folder: build/Android
+          folder: ./
   # deployIOS:
   #   needs: buildForIOSAndAndroid
   #   name: Deploy IOS to Github Pages
