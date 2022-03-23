@@ -37,7 +37,6 @@ jobs:
         with:
           name: Build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
-
   deployAndroid:
     needs: buildForIOSAndAndroid
     name: Deploy Android to Github Pages
