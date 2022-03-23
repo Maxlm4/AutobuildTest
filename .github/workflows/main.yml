@@ -43,7 +43,7 @@ jobs:
     name: Deploy Android to Github Pages
     runs-on: ubuntu-latest
     steps:
-       - name: Checkout code
+      - name: Checkout code
         uses: actions/checkout@v2
 
       - uses: actions/download-artifact@v2
