@@ -49,12 +49,12 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: build-Android
-          path: build
+          path: build/Android
 
       - name: Display structure of root files
         run: ls -R
         working-directory: build/Android
-        
+
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
