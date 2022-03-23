@@ -35,8 +35,9 @@ jobs:
           AllowDirtyBuild: true
       - uses: actions/upload-artifact@v2
         with:
-          name: Build-${{ matrix.targetPlatform }}
+          name: build-${{ matrix.targetPlatform }}
           path: build/${{ matrix.targetPlatform }}
+          
   deployAndroid:
     needs: buildForIOSAndAndroid
     name: Deploy Android to Github Pages
@@ -44,7 +45,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v2
         with:
-          name: Build-Android
+          name: build-Android
           path: build/Android
 
       - name: Deploy
@@ -62,7 +63,7 @@ jobs:
 
   #     - uses: actions/download-artifact@v2
   #       with:
-  #         name: Build-StandaloneWindows64
+  #         name: build-StandaloneWindows64
   #         path: build/StandaloneWindows64
 
   #     - name: Deploy
