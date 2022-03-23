@@ -56,10 +56,10 @@ jobs:
         working-directory: build/Android
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.2.5
+        uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-builds
-          folder: build/Android
+          folder: .
   # deployIOS:
   #   needs: buildForIOSAndAndroid
   #   name: Deploy IOS to Github Pages
