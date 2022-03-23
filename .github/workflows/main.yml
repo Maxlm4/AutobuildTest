@@ -52,37 +52,17 @@ jobs:
           name: build-Android
           path: build/Android
 
-      - name: Display structure of root files
-        run: ls -R
-        working-directory: build/Android
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@4.1.4
-        with:
-          branch: gh-builds
-          folder: build
-  deployIOS:
-    needs: buildForIOSAndAndroid
-    name: Deploy iOS to Github Pages
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
       - uses: actions/download-artifact@v2
         with:
           name: build-StandaloneWindows64
           path: build/StandaloneWindows64
 
-      - name: Display structure of root files
-        run: ls -R
-        working-directory: build/StandaloneWindows64
-
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-builds
           folder: build
+
   # deployIOS:
   #   needs: buildForIOSAndAndroid
   #   name: Deploy IOS to Github Pages
