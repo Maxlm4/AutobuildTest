@@ -9,7 +9,7 @@ Le code n'est pas le projet en lui-même, contrairement aux actions associée au
 
 Les tests ont été effectués sur des builds Ios, Windows Standalone et Android, ainsi que sur la gestion des artéfacts.
 
-
+=======================================================================================================================
 
 A near empty Unity project used for testing continuous integration technologies such as:
 -Github Actions
